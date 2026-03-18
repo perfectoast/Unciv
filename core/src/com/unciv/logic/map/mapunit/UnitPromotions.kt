@@ -82,9 +82,9 @@ class UnitPromotions : IsPartOfGameInfoSerialization {
 
     @Readonly
     fun canBePromoted(): Boolean {
-        if (XP < xpForNextPromotion()) return false
         if (getAvailablePromotions().none()) return false
-        return true
+        if (XP >= xpForNextPromotion()) return true
+        return getAvailablePromotions().any { it.hasUnique(UniqueType.FreePromotion) }
     }
 
     fun addPromotion(promotionName: String, isFree: Boolean = false) {
