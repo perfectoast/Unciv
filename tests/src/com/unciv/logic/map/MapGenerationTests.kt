@@ -13,26 +13,24 @@ import org.junit.runner.RunWith
 
 @RunWith(GdxTestRunner::class)
 class MapGenerationTests {
-    private var map = TileMap()
     private var ruleSet = Ruleset()
+    
 
-
-    @Before
-    fun initTheWorld() {
+    @Test
+    fun testAllMapGenerations() {
+        RulesetCache.loadRulesets(noMods = true)
+        ruleSet = RulesetCache.getVanillaRuleset()
+        val mapGenerator = MapGenerator(ruleSet)
+        for (mapType in MapType.allValues) {
+            for (mapShape in MapShape.allValues) {
+                for (worldWrap in listOf(true, false)) {
+                    val mapParameters = MapParameters()
+                    mapParameters.type = mapType
+                    mapParameters.shape = mapShape
+                    mapParameters.worldWrap = worldWrap
+                    mapGenerator.generateMap(mapParameters)
+                }
+            }
+        }
     }
-
-//    @Test
-//    fun testAllMapGenerations() {
-//        RulesetCache.loadRulesets(noMods = true)
-//        ruleSet = RulesetCache.getVanillaRuleset()
-//        val mapGenerator = MapGenerator(ruleSet)
-//        for (mapType in MapType.allValues) {
-//            for (mapShape in MapShape.allValues) {
-//                val mapParameters = MapParameters()
-//                mapParameters.type = mapType
-//                mapParameters.shape = mapShape
-//                mapGenerator.generateMap(mapParameters)
-//            }
-//        }
-//    }
 }
