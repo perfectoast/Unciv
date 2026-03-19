@@ -137,9 +137,6 @@ open class UncivGame(val isConsoleMode: Boolean = false) : Game(), PlatformSpeci
             translations.tryReadTranslationForCurrentLanguage()
             translations.loadPercentageCompleteOfLanguages()
             TileSetCache.loadTileSetConfigs()
-            if (settings.tileSet !in TileSetCache) { // The configured tileset is no longer available, default back
-                settings.tileSet = Constants.defaultTileset
-            }
 
             SkinCache.loadSkinConfigs()
 
