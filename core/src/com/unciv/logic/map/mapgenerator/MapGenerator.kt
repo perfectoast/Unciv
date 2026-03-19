@@ -253,7 +253,7 @@ class MapGenerator(val ruleset: Ruleset, private val coroutineScope: CoroutineSc
             tile.naturalWonder = mirrorTile.naturalWonder
             tile.setTerrainFeatures(mirrorTile.terrainFeatures)
             tile.tileResource = mirrorTile.tileResource
-            tile.improvement = mirrorTile.improvement
+            tile.setImprovementBasic(mirrorTile.tileImprovement)
             
             for (neighbor in tile.neighbors){
                 val neighborMirror = getMirrorTile(neighbor, mirroringType) ?: continue
@@ -417,8 +417,10 @@ class MapGenerator(val ruleset: Ruleset, private val coroutineScope: CoroutineSc
                 (suitableTiles.size * ruleset.modOptions.constants.ancientRuinCountMultiplier).roundToInt(),
                 suitableTiles,
                 map.mapParameters.mapSize.radius)
-        for (tile in locations)
-            tile.improvement = ruinsEquivalents.values.filter { isPlaceable(it, tile) }.random().name
+        for (tile in locations) {
+            val ruins = ruinsEquivalents.values.filter { isPlaceable(it, tile) }.random()
+            tile.setImprovementBasic(ruins)
+        }
     }
 
     private fun spreadResources(tileMap: TileMap) {

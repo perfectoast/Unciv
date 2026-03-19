@@ -939,7 +939,7 @@ class MapUnit : IsPartOfGameInfoSerialization {
         // The state also needs to be valid for uniques to see the cached version
         cache.state = GameContext(this)
         // The improvement may get removed if it has ruins effects or is a barbarian camp, and will still be needed if removed
-        val improvement = tile.improvement
+        val improvement = tile.tileImprovement
 
 
         // To allow triggering on barb camps and ruins, must happen before entering them
@@ -947,10 +947,10 @@ class MapUnit : IsPartOfGameInfoSerialization {
         for (triggeredUnique in triggeredUniques)
             UniqueTriggerActivation.triggerUnique(triggeredUnique, this)
 
-        if (civ.isMajorCiv() && tile.getTileImprovement()?.isAncientRuinsEquivalent(cache.state) == true) {
+        if (civ.isMajorCiv() && improvement?.isAncientRuinsEquivalent(cache.state) == true) {
             getAncientRuinBonus(tile)
         }
-        if (improvement == Constants.barbarianEncampment && !civ.isBarbarian)
+        if (improvement?.name == Constants.barbarianEncampment && !civ.isBarbarian)
             clearEncampment(tile)
         // Check whether any civilians without military units are there.
         // Keep in mind that putInTile(), which calls this method,
