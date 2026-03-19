@@ -1,8 +1,6 @@
 ## 4.19.19
 
-Activated map generation tests since the problem was solved in 
-
-chore: Added MapGenerationTests, deactivated since it's currently failing - see 
+Reset tileset settings when deleting the mod that contained the tileset
 
 AIs ignore demands/declarations of friendship from dead civs
 
@@ -11,8 +9,6 @@ By Ambeco:
 - flat earth hexigonal no longer crashes 
 
 Bugfix: don't try to buy missionaries in cities with a civilian unit - By EmperorPinguin
-
-[Refactor] Add caching for tileImprovement - By SeventhM
 
 ## 4.19.18
 
