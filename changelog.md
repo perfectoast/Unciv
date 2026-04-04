@@ -1,18 +1,18 @@
-## 4.19.20
+## 4.20.0
+
+By unciv-loof:
+- Fix embassy trade logic bug 
+- Popup after other civ responds to a demand 
 
 By SeventhM:
 - Add conditionals for current unit movement 
 - Fix unavailable unique being ignored in unexpected places 
 
-By unciv-loof:
-- Popup after other civ responds to a demand 
-- Fix embassy trade logic bug 
-
 Theoretical improvements to workerAutomation performance - By Ambeco
 
-Fix missing .tr() calls in multiplayer game preview description - By evanofficial
+Fixed translation in multiplayer game preview description - By evanofficial (new contributor!)
 
-Upon signing a peace treaty unique - By PLynx01
+'Upon signing a peace treaty' unique - By PLynx01
 
 ## 4.19.19
 
